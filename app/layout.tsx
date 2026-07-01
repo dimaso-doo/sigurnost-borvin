@@ -16,6 +16,13 @@ export const metadata: Metadata = {
   },
   description:
     "Protivpožarna oprema, servis vatrogasnih aparata, hidrantska oprema, dojava požara, alarmni sistemi i monitoring objekata.",
+  icons: {
+    icon: [
+      { url: "/logo-sigurnost-borvin.png", type: "image/png" }
+    ],
+    shortcut: "/logo-sigurnost-borvin.png",
+    apple: "/logo-sigurnost-borvin.png"
+  },
   keywords: [
     "Sigurnost Borvin",
     "protivpožarni aparati",
