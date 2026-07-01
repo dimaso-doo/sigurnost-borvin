@@ -45,13 +45,6 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
-      <div className="top-strip">
-        <span>{locale === "en" ? "Fire protection equipment and service" : "Protivpožarna oprema i servis"}</span>
-        <a href={phoneHref}>
-          <Phone size={15} />
-          {contact.mobile}
-        </a>
-      </div>
       <div className="nav-shell">
         <Link className="brand" href="/" aria-label="Sigurnost Borvin početna">
           <Image src="/logo-sigurnost-borvin.png" width={1271} height={1237} alt="Sigurnost Borvin" priority />

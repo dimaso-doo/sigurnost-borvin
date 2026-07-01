@@ -1,4 +1,6 @@
-import { Lock, PencilLine } from "lucide-react";
+import { AdminAiChat } from "@/components/AdminAiChat";
+import { AdminLogin } from "@/components/AdminLogin";
+import { getAdminConfig, isAdminAuthenticated } from "@/lib/adminAuth";
 import { adminCollections } from "@/lib/data";
 
 export const metadata = {
@@ -9,25 +11,14 @@ export const metadata = {
   }
 };
 
-export default function AdminPreviewPage() {
+export default async function AdminPreviewPage() {
+  const isAuthenticated = await isAdminAuthenticated();
+  const { password, sessionSecret } = getAdminConfig();
+  const isConfigured = Boolean(password && sessionSecret);
+
   return (
     <main className="admin-preview">
-      <section>
-        <Lock size={30} />
-        <span>Admin panel koncept</span>
-        <h1>CMS zona za klijenta</h1>
-        <p>
-          U produkciji ovde ide Payload CMS sa prijavom, rolama i kolekcijama koje uređuju javni sajt.
-        </p>
-        <div className="admin-list">
-          {adminCollections.map((item) => (
-            <div key={item}>
-              <PencilLine size={18} />
-              {item}
-            </div>
-          ))}
-        </div>
-      </section>
+      {isAuthenticated ? <AdminAiChat collections={adminCollections} /> : <AdminLogin isConfigured={isConfigured} />}
     </main>
   );
 }

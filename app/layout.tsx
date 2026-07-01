@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Preloader } from "@/components/Preloader";
+import { ScrollEffects } from "@/components/ScrollEffects";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sigurnost-borvin.co.rs";
@@ -8,6 +9,7 @@ const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: "Sigurnost Borvin",
   title: {
     default: "Sigurnost Borvin | Protivpožarna oprema i servis",
     template: "%s | Sigurnost Borvin"
@@ -26,13 +28,44 @@ export const metadata: Metadata = {
   verification: {
     google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "M-pCbrue0RRWU8MJCJr2nPQAd7evkjeIV1YzjhEoK80"
   },
+  alternates: {
+    languages: {
+      sr: "/",
+      en: "/en"
+    }
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1
+    }
+  },
   openGraph: {
     title: "Sigurnost Borvin",
     description: "Oprema, servis i sistemi za zaštitu od požara.",
     url: siteUrl,
     siteName: "Sigurnost Borvin",
+    images: [
+      {
+        url: "/logo-sigurnost-borvin.png",
+        width: 1200,
+        height: 1200,
+        alt: "Sigurnost Borvin logo"
+      }
+    ],
     locale: "sr_RS",
     type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sigurnost Borvin | Protivpožarna oprema i servis",
+    description:
+      "Protivpožarna oprema, servis vatrogasnih aparata, hidrantska oprema, dojava požara i alarmni sistemi.",
+    images: ["/logo-sigurnost-borvin.png"]
   }
 };
 
@@ -54,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </>
         ) : null}
         <Preloader />
+        <ScrollEffects />
         {children}
       </body>
     </html>

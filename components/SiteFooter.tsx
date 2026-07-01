@@ -28,6 +28,16 @@ export function SiteFooter() {
   const pathname = usePathname();
   const locale = pathname.startsWith("/en") ? "en" : "sr";
   const navItems = footerNav[locale];
+  const legalLinks =
+    locale === "en"
+      ? [
+          { href: "/en/privacy-policy", label: "Privacy Policy" },
+          { href: "/en/terms-and-conditions", label: "Terms and Conditions" }
+        ]
+      : [
+          { href: "/politika-privatnosti", label: "Politika privatnosti" },
+          { href: "/uslovi-koriscenja", label: "Uslovi korišćenja" }
+        ];
 
   return (
     <footer className="site-footer">
@@ -57,8 +67,14 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© 2026 Sigurnost Borvin</span>
-        <span>{locale === "en" ? "Equipment · service · protection systems" : "Oprema · servis · sistemi zaštite"}</span>
+        <span>© 2026 Sigurnost Borvin. All rights reserved.</span>
+        <div className="footer-legal">
+          {legalLinks.map((item) => (
+            <Link href={item.href} key={item.href}>
+              {item.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </footer>
   );

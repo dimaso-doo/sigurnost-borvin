@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { AdvicePreview } from "@/components/AdvicePreview";
 import { ContactBand } from "@/components/ContactBand";
 import { SectionTitle } from "@/components/SectionTitle";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -24,12 +26,10 @@ export default function CatalogPage() {
         />
         <div className="catalog-grid">
           {categories.map((category) => {
-            const Icon = category.icon;
             return (
               <article className="catalog-card" key={category.title}>
-                <img src={category.image} alt={category.title} />
+                <Image src={category.image} alt={category.title} width={900} height={900} loading="lazy" />
                 <div>
-                  <Icon size={25} />
                   <span>{category.eyebrow}</span>
                   <h2>{category.title}</h2>
                   <p>{category.text}</p>
@@ -42,6 +42,7 @@ export default function CatalogPage() {
           })}
         </div>
         <ContactBand />
+        <AdvicePreview />
       </main>
       <SiteFooter />
     </>

@@ -50,16 +50,6 @@ export default function ContactPage() {
               <input type="text" name="contact" placeholder="Kako da vas kontaktiramo" />
             </label>
             <label>
-              Tema
-              <select name="topic" defaultValue="Servis PP aparata">
-                <option>Servis PP aparata</option>
-                <option>Hidrantska oprema</option>
-                <option>Dojava požara</option>
-                <option>Alarmni sistemi</option>
-                <option>Katalog proizvoda</option>
-              </select>
-            </label>
-            <label>
               Poruka
               <textarea name="message" placeholder="Ukratko opišite šta vam je potrebno" rows={5} />
             </label>
@@ -68,6 +58,25 @@ export default function ContactPage() {
               Pošalji upit
             </button>
           </form>
+        </section>
+        <section className="map-section">
+          <div className="map-copy">
+            <span className="eyebrow">Lokacija</span>
+            <h2>Naša lokacija</h2>
+            <strong>Vladike Ćirića 17, Novi Sad</strong>
+            <p>Posetite nas ili pošaljite upit za servis, opremu i sisteme zaštite.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Vladike%20%C4%86iri%C4%87a%2017%2C%2021000%20Novi%20Sad" target="_blank" rel="noreferrer">
+              Otvori u Google Maps
+            </a>
+          </div>
+          <div className="map-frame">
+            <iframe
+              title="Sigurnost Borvin lokacija"
+              src="https://www.google.com/maps?q=Vladike%20%C4%86iri%C4%87a%2017%2C%2021000%20Novi%20Sad&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </section>
       </main>
       <SiteFooter />

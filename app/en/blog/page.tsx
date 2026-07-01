@@ -23,11 +23,10 @@ export default function EnglishBlogPage() {
         />
         <div className="post-grid">
           {enPosts.map((post) => {
-            const Icon = post.icon;
             return (
               <article className="post-card" key={post.title}>
+                {"image" in post ? <img src={post.image as string} alt={post.title} /> : null}
                 <span>{post.tag}</span>
-                <Icon size={26} />
                 <h2>{post.title}</h2>
                 <p>{post.excerpt}</p>
                 <a href="/en/contact">

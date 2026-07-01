@@ -1,4 +1,5 @@
 import { Building2 } from "lucide-react";
+import { AdvicePreview } from "@/components/AdvicePreview";
 import { ContactBand } from "@/components/ContactBand";
 import { SectionTitle } from "@/components/SectionTitle";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -31,6 +32,7 @@ export default function ReferencesPage() {
           ))}
         </div>
         <ContactBand />
+        <AdvicePreview />
       </main>
       <SiteFooter />
     </>

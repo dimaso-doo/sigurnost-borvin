@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, PhoneCall } from "lucide-react";
 import { ContactBand } from "@/components/ContactBand";
+import { HeroShowcase } from "@/components/HeroShowcase";
 import { SectionTitle } from "@/components/SectionTitle";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -37,16 +37,7 @@ export default function EnglishHome() {
               </a>
             </div>
           </div>
-          <div className="hero-visual">
-            <img src="/borvin-products/servis.jpg" alt="Fire protection equipment service" />
-            <div className="hero-card">
-              <Image src="/logo-sigurnost-borvin.png" width={72} height={72} alt="" />
-              <div>
-                <strong>Service and equipment</strong>
-                <span>Extinguishers · hydrants · detection · alarms</span>
-              </div>
-            </div>
-          </div>
+          <HeroShowcase badgeTitle="Service and equipment" badgeText="Extinguishers · hydrants · detection · alarms" />
         </section>
 
         <section className="stats-row">
@@ -93,7 +84,6 @@ export default function EnglishHome() {
           />
           <div className="category-grid">
             {enCategories.slice(0, 4).map((category) => {
-              const Icon = category.icon;
               return (
                 <article className="category-card" key={category.title}>
                   <img src={category.image} alt={category.title} />
@@ -102,8 +92,7 @@ export default function EnglishHome() {
                     <h3>{category.title}</h3>
                     <p>{category.text}</p>
                     <Link href="/en/catalog">
-                      <Icon size={17} />
-                      View
+                      View <ArrowRight size={17} />
                     </Link>
                   </div>
                 </article>

@@ -12,23 +12,25 @@ export function ContactBand() {
 
   return (
     <section className="contact-band">
-      <div>
-        <span>{locale === "en" ? "Ready for an equipment check?" : "Spremni za pregled opreme?"}</span>
-        <h2>{locale === "en" ? "Send an inquiry or schedule service" : "Pošaljite upit ili zakažite servis"}</h2>
-      </div>
-      <div className="contact-actions">
-        <a href={`tel:${contact.mobile.replaceAll("/", "").replaceAll("-", "")}`}>
-          <Phone size={18} />
-          {locale === "en" ? "Call" : "Pozovi"}
-        </a>
-        <a href={`mailto:${contact.email}`}>
-          <Mail size={18} />
-          Email
-        </a>
-        <Link href={contactHref}>
-          <CalendarCheck size={18} />
-          {locale === "en" ? "Schedule" : "Zakaži"}
-        </Link>
+      <div className="contact-band-inner">
+        <div>
+          <span>{locale === "en" ? "Protection starts with ready equipment" : "Zaštita počinje ispravnom opremom"}</span>
+          <h2>{locale === "en" ? "Send an inquiry or schedule service" : "Pošaljite upit ili zakažite servis"}</h2>
+        </div>
+        <div className="contact-actions">
+          <a href={`tel:${contact.mobile.replaceAll("/", "").replaceAll("-", "")}`}>
+            <Phone size={18} />
+            {locale === "en" ? "Call" : "Pozovi"}
+          </a>
+          <a href={`mailto:${contact.email}`}>
+            <Mail size={18} />
+            Email
+          </a>
+          <Link href={contactHref}>
+            <CalendarCheck size={18} />
+            {locale === "en" ? "Schedule" : "Zakaži"}
+          </Link>
+        </div>
       </div>
     </section>
   );

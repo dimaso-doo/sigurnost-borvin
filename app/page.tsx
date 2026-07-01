@@ -1,11 +1,15 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, PhoneCall } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, CalendarDays, CheckCircle2, Flame, PhoneCall, ShieldCheck } from "lucide-react";
+import { AdvicePreview } from "@/components/AdvicePreview";
 import { ContactBand } from "@/components/ContactBand";
+import { HeroShowcase } from "@/components/HeroShowcase";
 import { SectionTitle } from "@/components/SectionTitle";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { categories, contact, sectors, services, stats, structuredLocalBusiness } from "@/lib/data";
+
+const statIcons = [CalendarDays, Flame, ShieldCheck];
 
 export default function Home() {
   return (
@@ -34,28 +38,20 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="hero-visual">
-            <img
-              src="/borvin-products/servis.jpg"
-              alt="Servis protivpožarne opreme"
-            />
-            <div className="hero-card">
-              <Image src="/logo-sigurnost-borvin.png" width={72} height={72} alt="" />
-              <div>
-                <strong>Servis i oprema</strong>
-                <span>Vatrogasni aparati · hidranti · dojava · alarmi</span>
-              </div>
-            </div>
-          </div>
+          <HeroShowcase badgeTitle="Servis i oprema" badgeText="Vatrogasni aparati · hidranti · dojava · alarmi" />
         </section>
 
         <section className="stats-row">
-          {stats.map((stat) => (
-            <div key={stat.label}>
-              <strong>{stat.value}</strong>
-              <span>{stat.label}</span>
-            </div>
-          ))}
+          {stats.map((stat, index) => {
+            const Icon = statIcons[index] ?? ShieldCheck;
+            return (
+              <div key={stat.label}>
+                <Icon className="stats-icon" size={52} />
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            );
+          })}
         </section>
 
         <section className="section">
@@ -79,25 +75,27 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section tinted">
+        <section className="section tinted burned-section">
           <SectionTitle
             eyebrow="Katalog"
-            title="Proizvodi kao pregledan katalog, spremni za budući webshop."
-            text="Za početak bez korpe i plaćanja: svaka kategorija vodi ka upitu, a kasnije se mogu dodati cene, lager i naručivanje."
-          />
+            title="Pronađite protivpožarnu opremu koja odgovara vašem objektu."
+            text="Pregledajte najtraženije kategorije, izaberite šta vam treba i pošaljite upit. Brzo ćemo pomoći oko izbora, dostupnosti i sledećeg koraka."
+          >
+            <Link className="button ghost section-title-action" href="/katalog">
+              Vidi sve <ArrowRight size={16} />
+            </Link>
+          </SectionTitle>
           <div className="category-grid">
             {categories.slice(0, 4).map((category) => {
-              const Icon = category.icon;
               return (
                 <article className="category-card" key={category.title}>
-                  <img src={category.image} alt={category.title} />
+                  <Image src={category.image} alt={category.title} width={900} height={900} loading="lazy" />
                   <div>
                     <span>{category.eyebrow}</span>
                     <h3>{category.title}</h3>
                     <p>{category.text}</p>
                     <Link href="/katalog">
-                      <Icon size={17} />
-                      Pogledaj
+                      Pogledaj <ArrowRight size={17} />
                     </Link>
                   </div>
                 </article>
@@ -111,20 +109,20 @@ export default function Home() {
             <SectionTitle
               eyebrow="Zašto Borvin"
               title="Sigurnost bez nepotrebne buke."
-              text="Jasna ponuda, direktan kontakt i pregledne kategorije za klijente koji žele brzo da reše opremu, servis ili sistem zaštite."
+              text="Mirna, tačna i proverljiva zaštita: oprema koja je dostupna, servis koji se pamti po roku i podrška koja zna šta objektu stvarno treba."
             />
             <ul className="check-list">
               <li>
                 <CheckCircle2 size={20} />
-                Kategorije odgovaraju realnoj ponudi: aparati, hidranti, dojava, alarmi i HTZ oprema.
+                Jedan partner za PP aparate, hidrante, dojavu, alarme, video nadzor i HTZ opremu.
               </li>
               <li>
                 <CheckCircle2 size={20} />
-                Kontakt i servis su vidljivi odmah, bez traženja kroz meni.
+                Servisni rokovi, evidencija i oprema organizovani su tako da inspekcija ne bude stres.
               </li>
               <li>
                 <CheckCircle2 size={20} />
-                Katalog omogućava brz upit za proizvode i usluge.
+                Svaki upit brzo vodi ka konkretnom sledećem koraku: pregled, ponuda, servis ili isporuka.
               </li>
             </ul>
           </div>
@@ -145,6 +143,7 @@ export default function Home() {
         </section>
 
         <ContactBand />
+        <AdvicePreview />
       </main>
       <SiteFooter />
     </>

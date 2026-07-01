@@ -50,16 +50,6 @@ export default function EnglishContactPage() {
               <input type="text" name="contact" placeholder="How should we contact you?" />
             </label>
             <label>
-              Topic
-              <select name="topic" defaultValue="Fire extinguisher service">
-                <option>Fire extinguisher service</option>
-                <option>Hydrant equipment</option>
-                <option>Fire detection</option>
-                <option>Alarm systems</option>
-                <option>Product catalog</option>
-              </select>
-            </label>
-            <label>
               Message
               <textarea name="message" placeholder="Briefly describe what you need" rows={5} />
             </label>
@@ -68,6 +58,25 @@ export default function EnglishContactPage() {
               Send inquiry
             </button>
           </form>
+        </section>
+        <section className="map-section">
+          <div className="map-copy">
+            <span className="eyebrow">Location</span>
+            <h2>Our location</h2>
+            <strong>Vladike Ćirića 17, Novi Sad</strong>
+            <p>Visit us or send an inquiry for service, equipment and protection systems.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Vladike%20%C4%86iri%C4%87a%2017%2C%2021000%20Novi%20Sad" target="_blank" rel="noreferrer">
+              Open in Google Maps
+            </a>
+          </div>
+          <div className="map-frame">
+            <iframe
+              title="Sigurnost Borvin location"
+              src="https://www.google.com/maps?q=Vladike%20%C4%86iri%C4%87a%2017%2C%2021000%20Novi%20Sad&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </section>
       </main>
       <SiteFooter />

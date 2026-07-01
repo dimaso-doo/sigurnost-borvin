@@ -1,3 +1,4 @@
+import { AdvicePreview } from "@/components/AdvicePreview";
 import { ContactBand } from "@/components/ContactBand";
 import { SectionTitle } from "@/components/SectionTitle";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -33,6 +34,7 @@ export default function ServicesPage() {
           })}
         </div>
         <ContactBand />
+        <AdvicePreview />
       </main>
       <SiteFooter />
     </>
